@@ -19,8 +19,17 @@ module leg(){
         difference(){
             cylinder(r=(LEG_DIAMETER+SHELL)/2,h=MOTOR_LENGTH+1);
             translate([0,0,-1]){
-                #cylinder(r=LEG_DIAMETER/2,h=MOTOR_LENGTH);
+                cylinder(r=LEG_DIAMETER/2,h=MOTOR_LENGTH);
             }
+        }
+    }
+}
+
+module weight(){
+    difference(){
+        cylinder(r=MOTOR_DIAMETER/2,h=5);
+        translate([MOTOR_DIAMETER/4,0,-1]){
+            cylinder(r=MOTOR_SHAFT_DIAMETER/2,h=7);
         }
     }
 }
@@ -40,7 +49,11 @@ difference(){
     }
 
     translate([0,0,SHELL]){
-        // motor
+        // make a hole for the motor
         cylinder(r=MOTOR_DIAMETER/2,h=MOTOR_LENGTH);
     }
+}
+
+translate([-MOTOR_DIAMETER/4,0,MOTOR_LENGTH+3]){
+    weight();
 }
