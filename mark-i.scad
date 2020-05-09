@@ -1,11 +1,11 @@
-MOTOR_DIAMETER = 23.7;
+MOTOR_DIAMETER = 24;
 MOTOR_LENGTH=31;
 MOTOR_SHAFT_DIAMETER = 2;
 MOTOR_SHAFT_LENGTH = 6;
 MOTOR_FACE_DIAMETER = 19;
 MOTOR_FACE_DEPTH = 3;
 
-BATTERY_DIAMETER = 16.5;
+BATTERY_DIAMETER = 17;
 BATTERY_LENGTH = 34.2;
 BATTERY_FACE_DIAMETER = 6;
 BATTERY_FACE_DEPTH = 1;
@@ -13,9 +13,9 @@ BATTERY_FACE_DEPTH = 1;
 LEG_DIAMETER = 3;
 
 WEIGHT_DIAMETER = MOTOR_DIAMETER;
-WEIGHT_HEIGHT = 7;
+WEIGHT_HEIGHT = 5;
 
-//$fn=50;
+$fn=50;
 
 SHELL = 2;
 
@@ -81,8 +81,8 @@ module leg(){
 
 module weight(){
     difference(){
-        cylinder(r=MOTOR_DIAMETER/2,h=5);
-        translate([MOTOR_DIAMETER/4,0,-1]){
+        cylinder(r=WEIGHT_DIAMETER/2,h=WEIGHT_HEIGHT);
+        translate([WEIGHT_DIAMETER/4,0,-1]){
             cylinder(r=MOTOR_SHAFT_DIAMETER/2,h=7);
         }
     }
@@ -90,7 +90,7 @@ module weight(){
 
 // ASSEMBLE!
 union(){
-    translate([0,0,WEIGHT_HEIGHT+SHELL]){
+    translate([0,0,WEIGHT_HEIGHT+(SHELL*2)]){
         rotate([0,0,45]){
             body();
         }
@@ -104,8 +104,7 @@ union(){
          }
      }
 }
-/*
+
 translate([-WEIGHT_DIAMETER/4,0,3]){
     weight();
 }
-*/
